@@ -3,67 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placeholder</title>
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
-            padding: 2rem;
-        }
-        h1 {
-            font-size: 3rem;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-        p {
-            max-width: 600px;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        iframe {
-            width: 800px;
-            height: 450px;
-            border: 2px solid #fff;
-            border-radius: 8px;
-            background-color: #000;
-        }
-
-        /* Responsive for smaller screens */
-        @media (max-width: 850px) {
-            iframe {
-                width: 100%;
-                height: 400px;
-            }
-        }
-    </style>
+    <title>James R Mann</title>
+    <meta name="description" content="James R Mann's personal site — browse a gallery of work and play games including Skullfall.">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="James R Mann">
+    <meta property="og:description" content="James R Mann's personal site — browse a gallery of work and play games including Skullfall.">
+    <meta property="og:image" content="https://jamesrmann.com/assets/favicon.svg">
+    <meta property="og:url" content="https://jamesrmann.com/index.html">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h1>🚧 Placeholder Site 🚧</h1>
-    <p>This is just here while I get the site up and running again. Feel free to play this game I made while you wait!</p>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <iframe class="header-frame" src="header.html#nav-home" title="Site navigation"></iframe>
 
-    <!-- Game Window -->
-   <div style="
-    width: 800px;
-    height: 450px;
-    border: 2px solid white;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: black;
-    flex-direction: column;
-">
-    <p>Game preview unavailable</p>
-    <a href="https://gx.games/games/k7ufhu/skullfall/" target="_blank">
-        <button>Play Game</button>
-    </a>
-</div>
+    <main id="main-content">
+        <section class="hero reveal">
+            <h1>Hi, I'm James Mann 👋</h1>
+            <!-- Placeholder: replace with a real one-sentence description of who you are and what you do -->
+            <p class="hero-tagline">[Add a one-sentence description of what you do — e.g. "I'm a developer who builds games and creative side projects."]</p>
+            <p>Take a look around at my gallery and the games I've made.</p>
+            <div class="hero-actions">
+                <a class="btn primary" href="gallery.html">View Gallery</a>
+                <a class="btn" href="games.html">Play Games</a>
+            </div>
+        </section>
+
+        <section class="card-grid">
+            <div class="card reveal">
+                <h3>Gallery</h3>
+                <p>A collection of images and work I've put together.</p>
+                <a href="gallery.html">Browse the gallery &rarr;</a>
+            </div>
+            <div class="card reveal">
+                <h3>Games</h3>
+                <p>Play games I've built, starting with Skullfall.</p>
+                <a href="games.html">Play now &rarr;</a>
+            </div>
+            <div class="card reveal">
+                <h3>About</h3>
+                <!-- Placeholder: replace with 2-3 real sentences about your background, skills, and interests -->
+                <p>[Add a short bio here.]</p>
+                <a href="#contact">Get in touch &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <div id="contact"></div>
+    <iframe class="footer-frame" src="footer.html" title="Site footer" loading="lazy"></iframe>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
+
