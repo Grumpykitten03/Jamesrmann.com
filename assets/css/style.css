@@ -291,7 +291,6 @@ main {
     margin: 0;
 }
 
-/* Games section (preserved from placeholder page) */
 .game-embed {
     width: 800px;
     max-width: 100%;
@@ -310,7 +309,7 @@ main {
     margin: 0 auto;
 }
 
-.game-preview-placeholder {
+.game-preview-mark {
     width: 80px;
     height: 80px;
     opacity: 0.6;
