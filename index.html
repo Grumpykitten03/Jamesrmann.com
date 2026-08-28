@@ -17,7 +17,7 @@
     <a class="skip-link" href="#main-content">Skip to content</a>
     <iframe class="header-frame" src="header.html#nav-home" title="Site navigation"></iframe>
 
-    <main id="main-content">
+    <main id="main-content"> 
         <section class="hero reveal">
             <h1>Hi, I'm James Mann 👋</h1>
             <p class="hero-tagline">Developer and creator exploring games, images, and interactive ideas.</p>
@@ -27,6 +27,30 @@
                 <a class="btn" href="games.html">Play Games</a>
             </div>
         </section>
+        <section class="hero-carousel reveal" aria-roledescription="carousel" aria-label="Featured highlights">
+            <div class="carousel-viewport">
+                <ul class="carousel-track">
+                    <li class="carousel-slide" aria-hidden="false">
+                        <img src="assets/favicon.svg" alt="Placeholder hero image 1" loading="eager">
+                    </li>
+                    <li class="carousel-slide" aria-hidden="true">
+                        <img src="assets/favicon.svg" alt="Placeholder hero image 2" loading="lazy">
+                    </li>
+                    <li class="carousel-slide" aria-hidden="true">
+                        <img src="assets/favicon.svg" alt="Placeholder hero image 3" loading="lazy">
+                    </li>
+                </ul>
+            </div>
+            <button class="carousel-btn prev" type="button" aria-label="Previous slide">&#10094;</button>
+            <button class="carousel-btn next" type="button" aria-label="Next slide">&#10095;</button>
+            <div class="carousel-dots" role="tablist" aria-label="Choose slide to display">
+                <button class="carousel-dot" type="button" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+                <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+                <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+            </div>
+        </section>
+
+       
 
         <section class="card-grid">
             <div class="card reveal">

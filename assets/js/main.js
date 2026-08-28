@@ -23,3 +23,145 @@
         observer.observe(el);
     });
 })();
+
+// Hero carousel: cycles slides on a timer, with prev/next/dot controls and pause-on-hover/focus.
+(function () {
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('.hero-carousel').forEach(function (carousel) {
+        var track = carousel.querySelector('.carousel-track');
+        var slides = Array.prototype.slice.call(carousel.querySelectorAll('.carousel-slide'));
+        var dots = Array.prototype.slice.call(carousel.querySelectorAll('.carousel-dot'));
+        var prevBtn = carousel.querySelector('.carousel-btn.prev');
+        var nextBtn = carousel.querySelector('.carousel-btn.next');
+        var current = 0;
+        var timer = null;
+        var autoplayDelay = 5000;
+
+        if (!track || slides.length === 0) {
+            return;
+        }
+
+        function goTo(index) {
+            current = (index + slides.length) % slides.length;
+            track.style.transform = 'translateX(-' + (current * 100) + '%)';
+            slides.forEach(function (slide, i) {
+                slide.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+            });
+            dots.forEach(function (dot, i) {
+                dot.setAttribute('aria-selected', i === current ? 'true' : 'false');
+            });
+        }
+
+        function next() {
+            goTo(current + 1);
+        }
+
+        function prev() {
+            goTo(current - 1);
+        }
+
+        function startAutoplay() {
+            if (prefersReducedMotion || slides.length < 2) {
+                return;
+            }
+            stopAutoplay();
+            timer = window.setInterval(next, autoplayDelay);
+        }
+
+        function stopAutoplay() {
+            if (timer) {
+                window.clearInterval(timer);
+                timer = null;
+            }
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function () {
+                prev();
+                startAutoplay();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function () {
+                next();
+                startAutoplay();
+            });
+        }
+
+        dots.forEach(function (dot, i) {
+            dot.addEventListener('click', function () {
+                goTo(i);
+                startAutoplay();
+            });
+        });
+
+        carousel.addEventListener('mouseenter', stopAutoplay);
+        carousel.addEventListener('mouseleave', startAutoplay);
+        carousel.addEventListener('focusin', stopAutoplay);
+        carousel.addEventListener('focusout', startAutoplay);
+
+        goTo(0);
+        startAutoplay();
+    });
+})();
+
+// Gallery lightbox: enlarges a clicked gallery image in place with its caption.
+(function () {
+    var lightbox = document.getElementById('gallery-lightbox');
+    var links = document.querySelectorAll('.gallery-link');
+
+    if (!lightbox || links.length === 0) {
+        return;
+    }
+
+    var image = document.getElementById('lightbox-image');
+    var caption = document.getElementById('lightbox-caption');
+    var closeBtn = lightbox.querySelector('.lightbox-close');
+    var lastFocused = null;
+
+    function open(link) {
+        var fullSrc = link.getAttribute('data-full-src');
+        var captionText = link.getAttribute('data-caption') || '';
+        var thumbImg = link.querySelector('img');
+
+        image.src = fullSrc;
+        image.alt = thumbImg ? thumbImg.alt : captionText;
+        caption.textContent = captionText;
+
+        lastFocused = document.activeElement;
+        lightbox.hidden = false;
+        closeBtn.focus();
+        document.addEventListener('keydown', onKeydown);
+    }
+
+    function close() {
+        lightbox.hidden = true;
+        image.src = '';
+        document.removeEventListener('keydown', onKeydown);
+        if (lastFocused) {
+            lastFocused.focus();
+        }
+    }
+
+    function onKeydown(event) {
+        if (event.key === 'Escape') {
+            close();
+        }
+    }
+
+    links.forEach(function (link) {
+        link.addEventListener('click', function () {
+            open(link);
+        });
+    });
+
+    closeBtn.addEventListener('click', close);
+
+    lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox) {
+            close();
+        }
+    });
+})();
