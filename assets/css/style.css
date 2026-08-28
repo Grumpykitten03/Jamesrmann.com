@@ -153,6 +153,11 @@ main {
     max-width: 650px;
     margin-bottom: 2.5rem;
 }
+.page-subtitle1 {
+    color: blue;
+    max-width: 650px;
+    margin-bottom: 2.5rem;
+}
 
 /* Hero carousel (homepage) */
 .hero-carousel {
