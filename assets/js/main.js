@@ -118,17 +118,29 @@
 
     var image = document.getElementById('lightbox-image');
     var caption = document.getElementById('lightbox-caption');
+    var projectLink = document.getElementById('lightbox-link');
     var closeBtn = lightbox.querySelector('.lightbox-close');
     var lastFocused = null;
 
-    function open(link) {
-        var fullSrc = link.getAttribute('data-full-src');
-        var captionText = link.getAttribute('data-caption') || '';
-        var thumbImg = link.querySelector('img');
+    function open(trigger) {
+        var fullSrc = trigger.getAttribute('data-full-src');
+        var captionText = trigger.getAttribute('data-caption') || '';
+        var thumbImg = trigger.querySelector('img');
+        var projectHref = trigger.getAttribute('data-link');
 
         image.src = fullSrc;
         image.alt = thumbImg ? thumbImg.alt : captionText;
         caption.textContent = captionText;
+
+        if (projectLink) {
+            if (projectHref) {
+                projectLink.href = projectHref;
+                projectLink.textContent = trigger.getAttribute('data-link-label') || 'View full project \u2192';
+                projectLink.hidden = false;
+            } else {
+                projectLink.hidden = true;
+            }
+        }
 
         lastFocused = document.activeElement;
         lightbox.hidden = false;
