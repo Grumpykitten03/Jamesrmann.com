@@ -24,6 +24,53 @@
     });
 })();
 
+// YouTube gallery cards: play selected videos in an in-page modal.
+(function () {
+    var modal = document.getElementById('video-modal');
+    var cards = document.querySelectorAll('.youtube-card');
+
+    if (!modal || cards.length === 0) {
+        return;
+    }
+
+    var player = document.getElementById('youtube-player');
+    var title = document.getElementById('video-modal-title');
+    var closeBtn = modal.querySelector('.video-modal-close');
+    var lastFocused = null;
+
+    function close() {
+        modal.hidden = true;
+        player.src = '';
+        if (lastFocused) {
+            lastFocused.focus();
+        }
+    }
+
+    cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+            var videoId = card.getAttribute('data-youtube-id');
+            lastFocused = document.activeElement;
+            title.textContent = card.getAttribute('data-video-title') || 'Enough Talk video';
+            player.title = title.textContent;
+            player.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&origin=https%3A%2F%2Fjamesrmann.com&widget_referrer=https%3A%2F%2Fjamesrmann.com%2FEnoughTalk.html';
+            modal.hidden = false;
+            closeBtn.focus();
+        });
+    });
+
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            close();
+        }
+    });
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !modal.hidden) {
+            close();
+        }
+    });
+})();
+
 // Hero carousel: cycles slides on a timer, with prev/next/dot controls and pause-on-hover/focus.
 (function () {
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

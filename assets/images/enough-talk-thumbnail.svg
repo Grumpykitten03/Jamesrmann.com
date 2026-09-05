@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title description">
+  <title id="title">Enough Talk</title>
+  <desc id="description">A bold Enough Talk project title card.</desc>
+  <rect width="1200" height="900" fill="#111111"/>
+  <circle cx="1040" cy="120" r="220" fill="#4da6ff" opacity=".85"/>
+  <circle cx="180" cy="820" r="300" fill="#f5a623" opacity=".9"/>
+  <path d="M0 180 C260 80 410 280 650 150 S980 30 1200 210" fill="none" stroke="#f5f5f5" stroke-width="18" opacity=".9"/>
+  <text x="90" y="420" fill="#f5f5f5" font-family="Arial, Helvetica, sans-serif" font-size="130" font-weight="700">ENOUGH</text>
+  <text x="90" y="555" fill="#f5f5f5" font-family="Arial, Helvetica, sans-serif" font-size="130" font-weight="700">TALK</text>
+  <text x="96" y="650" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="4">SHORT-FORM VIDEO</text>
+</svg>
